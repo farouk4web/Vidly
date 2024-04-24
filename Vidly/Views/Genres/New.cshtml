@@ -1,0 +1,24 @@
+﻿@model Vidly.Models.Genre
+@{
+    ViewBag.Title = "New Genre";
+}
+
+<h2>New</h2>
+
+@using(Html.BeginForm("Save", "Genres"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Save" />
+    </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

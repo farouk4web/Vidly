@@ -1,0 +1,43 @@
+﻿@model Vidly.Models.Movie
+
+<div id="detailsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">@Model.Name</h4>
+            </div>
+            <div class="modal-body">
+
+                <img src="~/Uploads/Movies/@Model.ImageSrc" alt="Alternate Text" style="width:350px;height:350px;margin:auto;display: block" />
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(m => m.Name) :</dt>
+                    <dd>@Html.DisplayFor(m => m.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.ReleaseDate) :</dt>
+                    <dd>@Model.ReleaseDate</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.DateAdded) :</dt>
+                    <dd>@Model.DateAdded</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.GenreId) :</dt>
+                    <dd>@Html.DisplayFor(m => m.Genre.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.RunningTime) :</dt>
+                    <dd>@Html.DisplayFor(m => m.RunningTime)</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.Price) :</dt>
+                    <dd>@Html.DisplayFor(m => m.Price)</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.NumberInStock) :</dt>
+                    <dd>@Html.DisplayFor(m => m.NumberInStock)</dd>
+                </dl>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                @Html.ActionLink("Update", "Update", new { id = Model.Id }, new { @class = "btn btn-primary notAuth" })
+            </div>
+        </div>
+    </div>
+</div>

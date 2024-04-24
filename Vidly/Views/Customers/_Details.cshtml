@@ -1,0 +1,33 @@
+﻿@model Vidly.Models.Customer
+
+<div id="detailsModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">@Model.Name</h4>
+            </div>
+            <div class="modal-body">
+                <img src="~/Uploads/Customers/@Model.PersonalPictureSrc" alt="Alternate Text" class="img-rounded img-thumbnail" style="width:400px;height:400px"/>
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(m => m.Name) :</dt>
+                    <dd>@Html.DisplayFor(m => m.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.BirthDate) :</dt>
+                    <dd>@Model.BirthDate.ToLongDateString()</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.MembershipTypeId) :</dt>
+                    <dd>@Html.DisplayFor(m => m.MembershipType.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(m => m.SupscripeToNewsletter) :</dt>
+                    <dd>@Html.DisplayFor(m => m.SupscripeToNewsletter)</dd>
+                </dl>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                @Html.ActionLink("Update", "Update", new { id = Model.Id }, new { @class = "btn btn-primary notAuth" })
+            </div>
+        </div>
+    </div>
+</div>

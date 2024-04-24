@@ -1,0 +1,73 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    color: #555
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/* Index page */
+.main-head {
+    margin:0
+}
+.section-head {
+    margin: 30px 0
+}
+.section-head .form-control {
+    width:auto
+}
+.section-head .new-link {
+    margin: 15px 0 0
+}
+
+/* Details page */
+@media (min-width: 768px) {
+
+    .dl-horizontal dt {
+        width: auto;
+        min-width: 170px
+    }
+} 
+
+
+/* jquery validation */
+.field-validation-error {
+    color: red
+}
+
+.input-validation-error {
+    border: 2px solid red
+}
+
+.validation-summary-errors span {
+    color: red;
+    font-weight:bold;
+}
+
+
+
+
+/* start login Page */
+#login {
+    background-image: url(~/Content/login.jpg);
+}
+/* end login Page */

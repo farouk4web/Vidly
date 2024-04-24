@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Vidly.Models.Rental>
+@{
+    ViewBag.Title = "Rentals";
+}
+
+<h2>Rentals</h2>
+@Html.ActionLink("New Rental", "New", "Rentals")
+
+<span id="numberOfRentals" class="hidden">@Model.Count()</span>
+
+<table id="rentals" class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.CustomerId)</th>
+            <th>@Html.DisplayNameFor(m => m.DateRented)</th>
+            <th>@Html.DisplayNameFor(m => m.DateReturned)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rental in Model)
+        {
+        <tr>
+            <td>@rental.Customer.Name</td>
+            <td>@rental.DateRented</td>
+            <td>@rental.DateReturned</td>
+            <td>
+                <button id="deleteBtn" data-rental-id="@rental.Id" class="btn btn-danger">Delete</button>
+                @Ajax.ActionLink("Return Movies", "ReturnMovies", new { id = rental.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "ReturnMovie" }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+        }
+
+    </tbody>
+
+</table>
+
+@section scripts
+{
+    <script>
+        function ReturnMovie() {
+            alert("Movies returned successfully.");
+        }
+        $(document).ready(function () {
+
+            var RentalsNumber = $("#numberOfRentals");
+
+            if (RentalsNumber.text() == 0) {
+                $("#rentals").remove();
+                RentalsNumber.after("<p class='lead'>we dont have any rental yet</p>");
+            }
+
+            $("#rentals").on("click", "#deleteBtn", function () {
+                var btn = $(this);
+                bootbox.confirm("Are you sure you want to delete this rental?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/Rentals/Delete/" + btn.attr("data-rental-id"),
+                            method: "POST",
+                            success: function () {
+                                bootbox.alert("rental is removed");
+                                btn.parents("tr").remove();
+                                console.log("rental is removed");
+                            }
+                        });
+                    }
+                });
+            });
+
+            
+        });
+    </script>
+}

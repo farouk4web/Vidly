@@ -1,0 +1,30 @@
+﻿@using Vidly.Views.Shared.Resources
+
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink(lang.appName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink(lang.Home, "Index", "Home")</li>
+                <li>@Html.ActionLink(lang.Customers, "Index", "Customers", null, new { @class = "notAuth" })</li>
+                <li>@Html.ActionLink(lang.Movies, "Index", "Movies")</li>
+
+                <li>@Html.ActionLink(lang.Rentals, "Index", "Rentals", null, new { @class = "notAuth" })</li>
+
+                <li>@Html.ActionLink(lang.Genres, "Index", "Genres")</li>
+                <li>@Html.ActionLink(lang.MembershipTypes, "MembershipTypes", "Customers")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+
+    </div>
+</div>

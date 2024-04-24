@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Vidly.Models.Genre>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Genres</h2>
+<div class="notAuth">
+    @Html.ActionLink("New Genre", "New")
+</div>
+
+<ul>
+    @foreach (var genre in Model)
+    {
+        <li>@genre.Id --- @genre.Name</li>
+    }
+</ul>
